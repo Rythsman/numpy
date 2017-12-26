@@ -1,0 +1,63 @@
+'''Three methods of array splicing'''
+
+#num.1  (for 1-dimension)
+>>> import numpy as np
+>>> a=np.array([1,2,5])
+>>> b=np.array([10,12,15])
+>>> a_list=list(a)
+>>> b_list=list(b)
+
+>>> a_list.extend(b_list)
+
+>>> a_list
+[1, 2, 5, 10, 12, 15]
+>>> a=np.array(a_list)
+>>> a
+array([ 1,  2,  5, 10, 12, 15])
+
+#num.2
+#use numpy.append(arr, values, axis=None)  two parameters,return 1-dimension array
+>>> a=np.arange(5)
+>>> a
+array([0, 1, 2, 3, 4])
+>>> np.append(a,10)
+array([ 0,  1,  2,  3,  4, 10])
+>>> a
+array([0, 1, 2, 3, 4])
+
+>>> b=np.array([11,22,33])
+>>> b
+array([11, 22, 33])
+>>> np.append(a,b)
+array([ 0,  1,  2,  3,  4, 11, 22, 33])
+
+>>> a
+array([[1, 2, 3],
+       [4, 5, 6]])
+>>> b=np.array([[7,8,9],[10,11,12]])
+>>> b
+array([[ 7,  8,  9],
+       [10, 11, 12]])
+>>> np.append(a,b)
+array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])
+
+#num.3
+#use np.concatenate((a1,a2...),axis=*)
+#when dimension >= 2,
+'''axis=0'''
+>>> a=np.array([[1,2,3],[4,5,6]])
+>>> b=np.array([[11,21,31],[7,8,9]])
+>>> np.concatenate((a,b),axis=0)
+array([[ 1,  2,  3],
+       [ 4,  5,  6],
+       [11, 21, 31],
+       [ 7,  8,  9]])
+
+'''axis=1'''
+>>> np.concatenate((a,b),axis=1)  #axis=1 represents the rows
+array([[ 1,  2,  3, 11, 21, 31],
+       [ 4,  5,  6,  7,  8,  9]])
+
+#compare all the methods,np.concatenate is more effective.
+
+#some copied from http://blog.csdn.net/zyl1042635242/article/details/43162031.
